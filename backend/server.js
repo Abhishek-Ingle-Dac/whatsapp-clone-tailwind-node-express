@@ -14,7 +14,12 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Routes
+// ✅ Health check route for Render
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
+// API routes
 app.use("/api/chats", chatRoutes);
 
 // Optional: Run payload processor once on startup
